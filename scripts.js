@@ -15,7 +15,8 @@ function addBookToLibrary(title, author, pages) {
 }
 
 addBookToLibrary("thisisatest", "madebyme", 420);
-
-addBookToLibrary("thisisanothertest", "madebyalsome", 421);
+addBookToLibrary("thisisanothertest", "madebyalsome", 7);
+addBookToLibrary("Book4", "J.K.", 71);
+addBookToLibrary("Book3", "J.K.", 69);
 
 console.log(Library)
