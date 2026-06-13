@@ -1,4 +1,11 @@
 const Library = []
+const dialogOpenButton = document.querySelector('#open-dialog-button');
+const bookInfoDialog = document.querySelector('#add-book-dialog');
+const bookAddbutton = document.querySelector('#add-book-button');
+
+dialogOpenButton.addEventListener('click', () => {
+  bookInfoDialog.show();
+})
 
 function Book(title, author, pages) {
   if (!new.target){throw Error("you have to use 'new' operator to call the constructor")}
