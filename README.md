@@ -13,3 +13,4 @@ I'm addind extra functionality to the project by giving the user the option to p
 
 I've got they styling done I think. I've got the book cards all displaying nicely. Each has a button to delete itself and a button that pops up a dialog to add a new book.
   But, I've got a bug I can't chase down. It deletes all of the books when I try to add a new book with the required input fields filled. 
+      Claude helped me find the bug. I had button type set to submit, which reloaded the webpage and cleared all of the books that weren't hard coded. That's... frustrating. added e.preventDefault

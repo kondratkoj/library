@@ -1,9 +1,11 @@
-const Library = []
+let Library = []
 // Grabs the DOM elements
 const dialogOpenButton = document.querySelector('#open-dialog-button');
 const bookInfoDialog = document.querySelector('#add-book-dialog');
 const addBookButton = bookInfoDialog.querySelector('#add-book-button');
-const mainBody = document.querySelector(".main-body")
+const mainBody = document.querySelector(".main-body");
+const bookForm = document.querySelector('#book-form');
+
 // grabs the dialog inputs
 const title = document.querySelector("#title");
 const author = document.querySelector("#author");
@@ -34,10 +36,15 @@ displayBooks();
 
 console.log(Library) 
 
-addBookButton.addEventListener('click', () => {
-  const newBook = new Book(title.value, author.value, pages.value, cover.value);
-  Library.push(newBook);
+bookForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  addBookToLibrary(title.value, author.value, pages.value, cover.value.startsWith("https://") ? cover.value : "none");
   displayBooks();
+  bookInfoDialog.close();
+  title.value = "";
+  author.value = "";
+  pages.value = "";
+  cover.value = "";
 })
 
 function displayBooks() {
@@ -93,6 +100,7 @@ function displayBooks() {
 
     deleteButton.addEventListener('click', () => {
       mainBody.removeChild(container)
+      Library = Library.filter(b => b.UID !== book.UID)    
     });
   });
 }
