@@ -8,24 +8,25 @@ dialogOpenButton.addEventListener('click', () => {
   bookInfoDialog.showModal();
 })
 
-function Book(title, author, pages) {
+function Book(title, author, pages, background) {
   if (!new.target){throw Error("you have to use 'new' operator to call the constructor")}
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.background = background;
   this.UID = crypto.randomUUID()
 
 }
 
-function addBookToLibrary(title, author, pages) {
-  const book = new Book(title, author, pages)
+function addBookToLibrary(title, author, pages, background) {
+  const book = new Book(title, author, pages, background)
   Library.push(book)
 }
 
-addBookToLibrary("thisisatest", "madebyme", 420);
-addBookToLibrary("thisisanothertest", "madebyalsome", 7);
-addBookToLibrary("Book4", "J.K.", 71);
-addBookToLibrary("Book3", "J.K.", 69);
+addBookToLibrary("Name of the Wind", "Patrick Rothfuss", 550, "https://grimoakpress.com/cdn/shop/files/cover-notw-fc.jpg?v=1706902909&width=713");
+addBookToLibrary("The River of Doubt", "Candice Millard", 490, "https://upload.wikimedia.org/wikipedia/en/5/55/The_River_of_Doubt.jpg");
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 500, "none");
+addBookToLibrary("Master & Apprentice", "Claudia Gray", 400, "none");
 
 console.log(Library) 
 
@@ -34,16 +35,29 @@ Library.forEach((book) => {
   const bookTitle = document.createElement("h4");
   const bookAuthor = document.createElement("p");
   const bookPages = document.createElement("p");
+  const containerFooter = document.createElement("div");
   const readUnread = document.createElement("input");
+  const readText = document.createElement("p");
   const deleteButton = document.createElement("button");
+  const bookCover = document.createElement("img")
 
   mainBody.appendChild(container);
-  container.appendChild(bookTitle);
-  container.appendChild(bookAuthor);
-  container.appendChild(bookPages);
-  container.appendChild(readUnread);
-  container.appendChild(deleteButton);
+  container.appendChild(bookCover);
+  if (book.background === "none") {
+    container.appendChild(bookTitle);
+    container.appendChild(bookAuthor);
+    container.appendChild(bookPages);
+  }
+  container.appendChild(containerFooter);
+  containerFooter.appendChild(readUnread);
+  containerFooter.appendChild(readText);
+  containerFooter.appendChild(deleteButton);
 
+  bookCover.onerror = function () {
+    bookCover.src = '/pictures/No_cover.jpeg'
+  }
+  bookCover.src = book.background;
+  bookCover.alt = `${book.title} ${book.author}`;
   bookTitle.textContent = book.title;
   bookAuthor.textContent = book.author;
   bookPages.textContent = book.pages;
@@ -53,4 +67,11 @@ Library.forEach((book) => {
                             </svg>`;
 
   readUnread.type = "checkbox";
+  container.className = "container";
+  bookTitle.className = "title";
+  bookAuthor.className = "author";
+  containerFooter.className = "container-footer";
+  bookPages.className = "pages";
+  deleteButton.className = "delete-button";
+  bookCover.className = "coverimg"
 });

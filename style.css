@@ -1,0 +1,95 @@
+body {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: minmax(8%, 12%) 1fr;
+  grid-template-areas:
+    "header"
+    "main";
+}
+
+header {
+  grid-area: header;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  background-color: rgb(23, 86, 80);
+}
+
+.main-body {
+  height: 100dvh;
+  grid-area: main;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+  grid-auto-flow: row;
+  justify-content: start;
+  align-content: start;
+  gap: 2rem;
+  padding: 1.5rem;
+  background-color: #319177;
+}
+
+.container {
+  height: 300px;
+  display: grid;
+  grid-template-rows: 9% 9% 60% 9% 9% 4%;
+  grid-template-areas:
+    "title"
+    "author"
+    "."
+    "pages"
+    "footer";
+  border-radius: 1em;
+  box-shadow: 0px 0px 30px 1px black;
+  position: relative;
+}
+
+.coverimg {
+  border-radius: 1em;
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.title{
+  grid-area: title;
+}
+
+.author {
+  grid-area: author;
+}
+
+.pages {
+  grid-area: pages;
+}
+
+.title,
+.author,
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  bottom: 1em;
+}
+
+.delete-button {
+  background: rgb(216, 1, 1);
+  border-radius: 40%;
+}
+
+.title,
+.author,
+.pages,
+.container-footer {
+  z-index: 1;
+}
