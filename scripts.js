@@ -25,6 +25,10 @@ function Book(title, author, pages, background) {
   this.UID = crypto.randomUUID()
 }
 
+Book.prototype.toggleRead = function() {
+  this.read = !this.read;
+}
+
 function addBookToLibrary(title, author, pages, background) {
   const book = new Book(title, author, pages, background)
   Library.push(book)
@@ -57,10 +61,10 @@ function displayBooks() {
     const bookAuthor = document.createElement("p");
     const bookPages = document.createElement("p");
     const containerFooter = document.createElement("div");
-    const readUnread = document.createElement("input");
+    const readButton = document.createElement("button");
     const readText = document.createElement("p");
     const deleteButton = document.createElement("button");
-    const bookCover = document.createElement("img")
+    const bookCover = document.createElement("img");
 
     mainBody.appendChild(container);
     container.appendChild(bookCover);
@@ -71,7 +75,7 @@ function displayBooks() {
       container.appendChild(bookPages);
     }
     container.appendChild(containerFooter);
-    containerFooter.appendChild(readUnread);
+    containerFooter.appendChild(readButton);
     containerFooter.appendChild(readText);
     containerFooter.appendChild(deleteButton);
     // Defaults photo displayed for cover if no url is provided
@@ -88,15 +92,22 @@ function displayBooks() {
                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                                 <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                               </svg>`;
-    readText.textContent = "READ"
-    readUnread.type = "checkbox";
+    readText.textContent = "UNREAD"
+    readButton.type = "button";
+    readButton.textContent = "✓";
     container.className = "container";
     bookTitle.className = "title";
     bookAuthor.className = "author";
     containerFooter.className = "container-footer";
     bookPages.className = "pages";
+    readButton.className = "read-button";
     deleteButton.className = "delete-button";
-    bookCover.className = "coverimg"
+    bookCover.className = "coverimg";
+
+    readButton.addEventListener('click', () => {
+      book.toggleRead();
+      readText.textContent = book.read ? "READ" : "UNREAD";
+    });
 
     deleteButton.addEventListener('click', () => {
       mainBody.removeChild(container)
@@ -104,3 +115,5 @@ function displayBooks() {
     });
   });
 }
+
+console.log(book.read)

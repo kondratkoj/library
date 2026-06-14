@@ -121,6 +121,13 @@ header {
   color: white;
 }
 
+.read-button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 700;
+}
+
 .delete-button {
   background: transparent;
   border: none;
