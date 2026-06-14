@@ -10,3 +10,6 @@ It's been a minute since I've done any .js coding. It's wild what I've forgotten
 I've been using Josh's reset.css lately. I have no preference on any one specific one, but I know it's good form to use it. 
 
 I'm addind extra functionality to the project by giving the user the option to provide an image URL to put their own background on the book tiles. working on making the layouts and whatnot look better.
+
+I've got they styling done I think. I've got the book cards all displaying nicely. Each has a button to delete itself and a button that pops up a dialog to add a new book.
+  But, I've got a bug I can't chase down. It deletes all of the books when I try to add a new book with the required input fields filled. 

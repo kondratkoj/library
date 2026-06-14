@@ -13,7 +13,40 @@ header {
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  background-color: rgb(23, 86, 80);
+  background-color: rgb(88, 110, 108);
+}
+
+#add-book-dialog {
+  background-color: #949494ec;
+  border-radius: 3rem;
+  box-shadow: 0px 0px 30px 1px black;
+  padding: 2rem;
+}
+
+#book-form {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  justify-items: center;
+  gap: 1em;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.dialog-button {
+  background: rgb(170, 170, 171);
+  border-radius: 1em;
+  font-weight: 700;
+}
+
+#add-book-button {
+  background: rgb(170, 170, 171);
+  border-radius: 1em;
+  font-weight: 700;
+  margin-top: 1rem;
 }
 
 .main-body {
@@ -26,7 +59,7 @@ header {
   align-content: start;
   gap: 2rem;
   padding: 1.5rem;
-  background-color: #319177;
+  background-color: #0000006d;
 }
 
 .container {
@@ -40,8 +73,10 @@ header {
     "pages"
     "footer";
   border-radius: 1em;
+  padding-top: 1em;
   box-shadow: 0px 0px 30px 1px black;
   position: relative;
+  overflow: hidden;
 }
 
 .coverimg {
@@ -50,7 +85,6 @@ header {
   inset: 0;
   height: 100%;
   width: 100%;
-  object-fit: cover;
   z-index: 0;
 }
 
@@ -78,13 +112,21 @@ header {
   grid-area: footer;
   display: flex;
   justify-content: space-around;
-  gap: 1rem;
+  gap: .3rem;
   bottom: 1em;
+  padding: 0px 1em;
+  background-color: rgba(0, 0, 0, 0.418);
+  font-weight: 500;
+  border-radius: 10%;
+  color: white;
 }
 
 .delete-button {
-  background: rgb(216, 1, 1);
-  border-radius: 40%;
+  background: transparent;
+  border: none;
+  stroke: white;
+  stroke-width: .7px;
+  margin-left: auto;
 }
 
 .title,
