@@ -38,8 +38,6 @@ addBookToLibrary("Name of the Wind", "Patrick Rothfuss", 550, "https://grimoakpr
 
 displayBooks();
 
-console.log(Library) 
-
 bookForm.addEventListener('submit', (e) => {
   e.preventDefault();
   addBookToLibrary(title.value, author.value, pages.value, cover.value.startsWith("https://") ? cover.value : "none");
@@ -53,7 +51,6 @@ bookForm.addEventListener('submit', (e) => {
 
 function displayBooks() {
   mainBody.innerHTML = '';
-  console.log(Library)
   Library.forEach((book) => {
     // makes the book card elements
     const container = document.createElement("div");
@@ -115,5 +112,3 @@ function displayBooks() {
     });
   });
 }
-
-console.log(book.read)
