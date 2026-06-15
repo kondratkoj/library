@@ -77,7 +77,7 @@ function displayBooks() {
     containerFooter.appendChild(deleteButton);
     // Defaults photo displayed for cover if no url is provided
     bookCover.onerror = function () {
-      bookCover.src = '/pictures/No_cover.jpeg'
+      bookCover.src = 'pictures/No_cover.jpeg'
     }
 
     bookCover.src = book.background;
