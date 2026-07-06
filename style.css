@@ -108,6 +108,10 @@ header {
   align-items: center;
 }
 
+.title:hover,.author:hover,.pages:hover {
+  z-index: 2;
+}
+
 .container-footer {
   grid-area: footer;
   display: flex;
