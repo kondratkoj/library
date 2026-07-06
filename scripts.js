@@ -16,31 +16,34 @@ dialogOpenButton.addEventListener('click', () => {
   bookInfoDialog.showModal();
 })
 
-function Book(title, author, pages, background) {
-  if (!new.target){throw Error("you have to use 'new' operator to call the constructor")}
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.background = background;
-  this.UID = crypto.randomUUID()
-}
+class Book {
+  constructor(title, author, pages, background) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.background = background;
+    this.UID = crypto.randomUUID();
+  }
 
-Book.prototype.toggleRead = function() {
+  toggleRead() {
   this.read = !this.read;
+  }
 }
 
-function addBookToLibrary(title, author, pages, background) {
-  const book = new Book(title, author, pages, background)
-  Library.push(book)
-}
-
-addBookToLibrary("Name of the Wind", "Patrick Rothfuss", 550, "https://grimoakpress.com/cdn/shop/files/cover-notw-fc.jpg?v=1706902909&width=713");
-
+//displays a stand-in book so the page isn't empty
+let originalBook = new Book("Name of the Wind", "Patrick Rothfuss", 550, "https://grimoakpress.com/cdn/shop/files/cover-notw-fc.jpg?v=1706902909&width=713");
+Library.push(originalBook);
 displayBooks();
 
+//this is what adds the new books from the pop up to the library
 bookForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  addBookToLibrary(title.value, author.value, pages.value, cover.value.startsWith("https://") ? cover.value : "none");
+  let book = new Book(
+    title.value, 
+    author.value, 
+    pages.value, 
+    cover.value.startsWith("https://") ? cover.value : "none")
+  Library.push(book)
   displayBooks();
   bookInfoDialog.close();
   title.value = "";

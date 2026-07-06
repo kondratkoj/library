@@ -16,3 +16,6 @@ I've got they styling done I think. I've got the book cards all displaying nicel
       Claude helped me find the bug. I had button type set to submit, which reloaded the webpage and cleared all of the books that weren't hard coded. That's... frustrating. added e.preventDefault
 
 Project is finished. There was a lot that I learned and got bit by during this. I look forward to improving. 
+
+7/5
+  I came back to change the factory into a class, and looking back through the code, its surprising to already see better ways to do things from old projects.
